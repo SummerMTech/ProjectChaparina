@@ -5,6 +5,7 @@ use App\Http\Controllers\ControlRegistro;
 use App\Http\Controllers\ControlSesion;
 use App\Http\Controllers\AnimalesController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\setupController;
 
 
 Route::get('/', function () {
@@ -15,9 +16,13 @@ Route::get('/principal', function () {
     return view('principal');
 });
 
-// ruta de animales
-Route::get('/animales',[AnimalesController::class,'index']) ->name('animales.index');
+Route::get('/setup', function () {
+    return view('setup');
+});
 
+// ruta de animales
+Route::get('/animales',[AnimalesController::class,'index']) ->name('animalesLista.index');
+//Route::get('/setup',[setupController::class,'index']) ->name('setup.index');
 Route::get('/login',[ControlSesion::class,'create'])
     ->middleware('guest')
     ->name('login.index');
