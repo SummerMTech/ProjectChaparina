@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Fugados</title>
+    <title>Fugados</title> 
+    <p class="text-xl">Usuario Responsable: <b>{{ auth()->user()->name }}</b></p>
 </head>
 <body>
     <h1>Listado de fugados</h1>
