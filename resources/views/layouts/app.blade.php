@@ -24,16 +24,12 @@
       </div>
       <img src="{{URL::asset('/images/vaca2.jpg')}}"  height="100" width="100" >
       <ul class="w-1/2 px-16 ml_auto flex justify-end pt-1">
-        @if(auth()->check())
-          <li>
-              <a href="{{ route('login.destroy')}}" class="font-semiblod border-2 border-white py-2 px-4 rounded-md hover:bg-red hover:text-indigo-700">Salir </a>
-          </li>
-        @else
+        
           <li>
               <a href="{{ route('login.index')}}" class="font-semiblod hover:bg-indigo-700 text-white py-3 px-4 rounded-md">Ingresar </a>
               <a href="{{ route('registro.index')}}" class="font-semiblod hover:bg-indigo-700 text-white py-3 px-4 rounded-md">Registro </a>
           </li>
-        @endif
+       
           
       
       </ul>
@@ -41,4 +37,4 @@
     </nav>
     @yield('content')  
   </body>
-</html>
+</html>s

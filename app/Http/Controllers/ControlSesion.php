@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Models\Fugados;
+
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -11,17 +15,32 @@ class ControlSesion extends Controller
         return view('auth.login');
     }
 
-    public function store(){
-        if(auth()->attempt(request(['email', 'password'])) == true)
+    public function store(Request $request){
+
+        
+        
+       // dd(request(['password']));
+        
+       
+        if(auth()->attempt(request(['email','password'])) == false)
         {            
-            //return redirect()->to('/animales');
-            return back()->withErrors(['message' => 'El usuario o contraseña es incorrecto, intenta otra vez!']);    
+            return back()->withErrors(['message' => 'El usuario o contraseña es incorrecto, INCORRECTO!']);    
+        }
+        //dd(request('email'));
+        if(request('email')=='admin@chaparina.com'){
+            return redirect()->to('/setup'); 
         }else{
-                return redirect()->to('/animales'); 
-        } 
+            return redirect()->to('/animales'); 
+        }
+        
+       
+        //dd(request(['password']));
+       
+        
     }
 
     public function destroy(){
+        Fugados::truncate();
         auth()->logout();
         return redirect()->to('/');     
     }
