@@ -8,6 +8,14 @@
     .mx-5 p span.user-name {
       color: red;
     }
+    .avatar {
+      width: 45px;
+    }
+    .logo {
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+    }
     </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,11 +38,14 @@
       <div class="w-1/2 px-12 mr-auto">
         <p class="text-2xl font-bold"> Control de ganado vacuno de la estancia Chaparina </p>
       </div>
-      <img src="{{URL::asset('/images/vaca2.jpg')}}"  height="100" width="100" >
+      <img src="{{URL::asset('/images/vaca2.jpg')}}" class="logo">
       <ul class="w-1/2 px-16 ml_auto flex justify-end pt-1">
       @if(auth()->check())
           <li class="mx-5">
-            <p class="text-xl">Usuario: <b>{{ auth()->user()->name }}</b></p>
+            <div style="display: flex">
+              <img src="{{ '../storage/app/'. Auth::user()->avatar }}" alt="Avatar" class="avatar">
+              <p class="text-xl">Usuario: <b>{{ auth()->user()->name }}</b></p>
+            </div>
           </li>
           <li>
               <a href="{{ route('login.destroy')}}" class="font-semiblod border-2 border-white py-2 px-4 rounded-md hover:bg-red hover:text-indigo-700">Cerrar Sesión </a>

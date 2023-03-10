@@ -17,16 +17,12 @@ class ControlSesion extends Controller
 
     public function store(Request $request){
 
-        
-        
-       // dd(request(['password']));
-        
-       
-        if(auth()->attempt(request(['email','password'])) == false)
+       // dd(request(['email','password']));
+       if(auth()->attempt(request(['email','password'])) == false)
         {            
             return back()->withErrors(['message' => 'El usuario o contraseña es incorrecto, INCORRECTO!']);    
         }
-        //dd(request('email'));
+        
         if(request('email')=='admin@chaparina.com'){
             return redirect()->to('/setup'); 
         }else{
@@ -34,14 +30,37 @@ class ControlSesion extends Controller
         }
         
        
-        //dd(request(['password']));
+        //
+        /*
+        if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
+            // Si el usuario ha iniciado sesión correctamente, redirige a la página de inicio
+
+            // Recupera los datos del usuario autenticado
+            $user = Auth::user();
+
+            // Recupera la ruta del archivo de avatar, si está disponible
+            $avatar_path = $user->avatar;
+
+            if(request('email')=='admin@chaparina.com'){
+                return redirect()->to('/setup'); 
+            }else{
+                return redirect()->to('/animales'); 
+            }
+        } else {
+            // Si la autenticación falla, redirige de vuelta al formulario de inicio de sesión
+            return back()->withErrors(['message' => 'El usuario o contraseña es incorrecto, INCORRECTO!']);
+        }*/
        
         
     }
 
-    public function destroy(){
+    public function destroy(Request $request){
         Fugados::truncate();
-        auth()->logout();
-        return redirect()->to('/');     
+        //auth()->logout();
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');     
     }
 }

@@ -33,13 +33,14 @@ Route::get('/logout',[ControlSesion::class,'destroy'])
     ->name('login.destroy');
 
 
-Route::get('/registro',[ControlRegistro::class,'create'])
-    ->middleware('guest') 
-    ->name('registro.index');
-   
+  
 Route::get('/admin', [AdminController::class, 'index'])
     ->middleware('auth.admin')
     ->name('admin.index');
+
+Route::get('/registro',[ControlRegistro::class,'create'])
+    ->middleware('guest') 
+    ->name('registro.index');
 
 Route::post('/registro',[ControlRegistro::class,'store']) ->name('registro.store');  
 
