@@ -16,7 +16,7 @@ class AnimalesController extends Controller
     public function index()
     {
         $animales = Animales::all();
-        $fugados = Animales::select('animales.nombre','fugados.codigo','fugados.fechaFuga')
+        $fugados = Animales::select('animales.nombre','animales.avatarVaca','fugados.codigo','fugados.fechaFuga')
         ->join('fugados', 'animales.codigo', '=', 'fugados.codigo')->get();
          
         return view('animales.index', compact('animales', 'fugados'));
