@@ -17,6 +17,10 @@ Route::get('/principal', function () {
     return view('principal');
 });
 
+Route::get('/vista', function () {
+    return view('vista');
+});
+
 //Route::get('/setup', function () {
 //    return view('setup');
 //});
