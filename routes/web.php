@@ -21,9 +21,12 @@ Route::get('/vista', function () {
     return view('vista');
 });
 
+
+
 //Route::get('/setup', function () {
 //    return view('setup');
 //});
+Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
 
 // ruta de animales
 Route::get('/animales',[AnimalesController::class,'index']) ->name('animalesLista.index');

@@ -20,7 +20,7 @@
 			<br>
 			<h1 class="text-5xl text-center pt.24">BIENVENIDO</h1>
       <br>
-      <img src="{{URL::asset('/images/vaca3.png')}}" class="rounded mx-auto d-block"  height="200" width="200" >
+      <img src="{{URL::asset('/images/logo.png')}}" class="rounded mx-auto d-block"  height="400" width="400" >
       <br>
 			<h1 class="text-5xl text-center pt.24">Proyecto de Final de Carrera</h1>
 		@endsection

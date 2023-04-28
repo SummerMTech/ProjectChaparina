@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\Animales;
 use App\Models\Fugados;
 use Illuminate\Http\Request;
@@ -22,6 +23,15 @@ class AnimalesController extends Controller
         return view('animales.index', compact('animales', 'fugados'));
     }
 
+    public function updateAnimalAges()
+    {
+        DB::table('animales')
+            ->where('edad', '>', 10)
+            ->increment('edad');
+
+        $user = Auth::user();
+        $user->notify(new \Illuminate\Notifications\Notification);
+    }
     /**
      * Show the form for creating a new resource.
      *
