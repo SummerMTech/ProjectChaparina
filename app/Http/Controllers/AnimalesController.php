@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use App\Models\Animales;
 use App\Models\Fugados;
 use Illuminate\Http\Request;
@@ -22,15 +21,23 @@ class AnimalesController extends Controller
          
         return view('animales.index', compact('animales', 'fugados'));
     }
+    public function index2()
+    {
+        $animales = Animales::all();
+        $fugados = Animales::select('animales.nombre','animales.avatarVaca','fugados.codigo','fugados.fechaFuga')
+        ->join('fugados', 'animales.codigo', '=', 'fugados.codigo')->get();
+         
+        return view('animales.index2', compact('animales', 'fugados'));
+    }
 
     public function updateAnimalAges()
     {
-        DB::table('animales')
-            ->where('edad', '>', 10)
-            ->increment('edad');
-
-        $user = Auth::user();
-        $user->notify(new \Illuminate\Notifications\Notification);
+        if ($animales->edad >= 10) {
+            $notification = new Notification();
+            $notification->title = 'Animal mayor de 10 años';
+            $notification->description = 'El animal ' . $animal->nombre . ' tiene ' . $animal->edad . ' años o más.';
+            $notification->save();
+        }
     }
     /**
      * Show the form for creating a new resource.

@@ -9,6 +9,8 @@ use App\Http\Controllers\setupController;
 use App\Http\Controllers\registroAnimalesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TablaController;
+use App\Http\Controllers\NotificationController;
+
 Route::get('/', function () {
     return view('home');
 });
@@ -21,15 +23,14 @@ Route::get('/vista', function () {
     return view('vista');
 });
 
+Route::get('/notificaciones', function () {
+    return view('notificaciones');
+})->name('notificaciones')->middleware('auth');
 
-
-//Route::get('/setup', function () {
-//    return view('setup');
-//});
-Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
-
+Route::get('/notificar', [NotificationController::class, 'enviarNotificacion']);
 // ruta de animales
 Route::get('/animales',[AnimalesController::class,'index']) ->name('animalesLista.index');
+Route::get('/animalesFugados',[AnimalesController::class,'index2']) ->name('animalesLista.index2');
 Route::get('/setup',[setupController::class,'create']) ->name('setup.index');
 
 Route::get('/login',[ControlSesion::class,'create'])->middleware('guest')->name('login.index');

@@ -1,6 +1,11 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <style>
+      .hero h1 {
+        color: #fff;
+      }
+    </style>  
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,12 +22,12 @@
 		@extends('layouts.app')
 		@section('title','Home')
 		@section('content')
-			<br>
-			<h1 class="text-5xl text-center pt.24">BIENVENIDO</h1>
-      <br>
-      <img src="{{URL::asset('/images/logo.png')}}" class="rounded mx-auto d-block"  height="400" width="400" >
-      <br>
-			<h1 class="text-5xl text-center pt.24">Proyecto de Final de Carrera</h1>
-		@endsection
+	    <img src="{{URL::asset('/images/fondo.png')}}" class="rounded mx-auto d-block"  height="500" width="1700" >
+      <div class="w-1/7 px-12 mr-auto" style="position: absolute; top: 250px; left: 300px;">
+        <p class="text-8xl font-bold" style="text-shadow: 0px 0px 10px rgba(255, 255, 255, 1);"> CONTROL GANADERO</p>
+        <p class="text-8xl font-bold" style="text-shadow: 0px 0px 10px rgba(255, 255, 255, 1);" > ESTANCIA CHAPARINA </p>
+        <p class="text-8xl font-bold" style="text-shadow: 0px 0px 10px rgba(255, 255, 255, 1);"> BENI </p>
+      </div>
+    @endsection
   </body>
 </html>

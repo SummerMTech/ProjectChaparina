@@ -80,6 +80,40 @@
       width: 60px;
       border-radius: 50%;
     }
+	.notification-count {
+		position: absolute;
+		top: -8px;
+		right: -8px;
+		background-color: #f00;
+		color: #fff;
+		border-radius: 50%;
+		font-size: 11px;
+		width: 18px;
+		height: 18px;
+		text-align: center;
+		line-height: 16px;
+	}	
+	nav {
+		background-color: #ccc; /* Fondo gris */
+		color: #fff; /* Texto blanco */
+		box-shadow: 0px 5px 12px -5px black; /* Sombra negra */
+		/* Otras propiedades de estilo de la barra de navegación */
+	}
+	#panel {
+		position: absolute;
+		top: 150px; /* Ajusta la posición superior según tu diseño */
+		left: 400px; /* Ajusta la posición izquierda según tu diseño */
+		right: 100px;
+		bottom: 0;
+		overflow: auto;
+		background-color: #f7f7f7;
+		border-left: 1px solid #ddd;
+	}
+	.panel-header {
+		height: 80px; /* Ajusta la altura según tu diseño */
+		background-color: #a889ff;
+		border-bottom: 1px solid #ddd;
+	}
 	</style>
 
 	<meta charset="UTF-8">
@@ -101,43 +135,39 @@
 	<title>Document</title>
 </head>
 <body>
-	
-    <nav class="flex py-5 bg-gray-400 text-white">
-		
-      <ul class="w-1/2 px-16 ml_auto flex justify-end pt-1">	
-	  <li class="nav-item">
-                <a href="{{ route('notifications.index') }}" class="nav-link">
-                    @if (auth()->user()->unreadNotifications->count() > 0)
-                        <span class="badge badge-danger">{{ auth()->user()->unreadNotifications->count() }}</span>
-                    @endif
-                </a>
-            </li>
+		<nav class="flex py-5 bg-gray-400 text-white">
 			
-	  @if(auth()->check())
-	 		 <span style="font-size: 2em; color: #2d3e50; position: absolute; top: 30px; left: 1500px; ">
-			  	<i class="fas fa-bell"></i>
-  			</span>
-	  		<li class="mx-5" style="position: absolute; top: 20px; left: 1550px;">
-		  	    <img src="{{ '../storage/app/'. Auth::user()->avatar }}" alt="Avatar" class="avatar">
-              <p class="text-xl"><b>{{ auth()->user()->name }}</b></p>
-          	</li>
-		  <div style="position: relative;">
-			<li>
-				<a href="{{ route('login.destroy')}}" class="font-semiblod hover:bg-blue-900 text-white py-3 px-4 rounded-md" style="position: absolute; top: -35px; right: 350px;">Cerrar Sesión </a>
-			</li>
-		  </div>
-         
-      @else
-	  <div style="position: relative;">
-			<li>
-				<a href="{{ route('login.destroy')}}" class="font-semiblod border-2 border-blue-500 py-2 px-4 rounded-md hover:bg-white hover:text-indigo-700" style="position: absolute; top: -30px; left: 800px;">Salir </a>
-			</li>
-		  </div>
-      @endif  
-      </ul>
-	 
-	</nav>
- 
+		<ul class="w-1/2 px-16 ml_auto flex justify-end pt-1">	
+				
+		@if(auth()->check())
+				<span style="font-size: 2em; color: #2d3e50; position: absolute; top: 30px; left: 1500px; ">
+					<a href="{{ route('notificaciones') }}">
+						<i class="fas fa-bell"></i>
+						@if(auth()->user()->unreadNotifications->count())
+							<span class="notification-count">{{ auth()->user()->unreadNotifications->count() }}</span>
+						@endif
+					</a>
+				</span>
+				<li class="mx-5" style="position: absolute; top: 10px; left: 1550px;">
+					<img src="{{ '../storage/app/'. Auth::user()->avatar }}" alt="Avatar" class="avatar">
+				<p class="text-xl"><b>{{ auth()->user()->name }}</b></p>
+				</li>
+			<div style="position: relative;">
+				<li>
+					<a href="{{ route('login.destroy')}}" class="font-semiblod hover:bg-blue-900 text-white py-3 px-4 rounded-md" style="position: absolute; top: -45px; right: 350px;">Cerrar Sesión </a>
+				</li>
+			</div>
+			
+		@else
+		<div style="position: relative;">
+				<li>
+					<a href="{{ route('login.destroy')}}" class="font-semiblod border-2 border-blue-500 py-2 px-4 rounded-md hover:bg-white hover:text-indigo-700" style="position: absolute; top: -30px; left: 800px;">Salir </a>
+				</li>
+			</div>
+		@endif  
+		</ul>
+		
+		</nav>
 
 <nav class="sidebar">
     <div class="sidebar-header">
@@ -173,7 +203,7 @@
             </a>
         </li>
 		<li class="menu-item">
-            <a href="#">
+            <a href="{{ route('animalesLista.index2')}}">
                 <i class="fas fa-cog"></i>
                 <span>Animales Fuera del Corral</span>
             </a>

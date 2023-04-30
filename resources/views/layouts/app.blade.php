@@ -20,7 +20,7 @@
     <nav class="flex py-3 text-white" style="background-color: #2d3e50;">
       <img src="{{URL::asset('/images/logo.png')}}"  height="70" width="90" >
       <div class="w-1/2 px-12 mr-auto" style="position: absolute; top: 35px; left: 50px;">
-        <p class="text-2xl font-bold"> CONTROL DE GANADO VACUNO DE LA ESTANCIA CHAPARINA 
+        <p class="text-2xl font-bold"> CONTROL CHAPARINA 
         </p>
       </div>
       <ul class="w-1/2 px-16 ml_auto flex justify-end pt-1"  style="position: absolute; top: 30px; left: 900px;">
