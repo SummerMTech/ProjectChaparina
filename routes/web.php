@@ -33,7 +33,9 @@ Route::get('/notificaciones', function () {
 
 Route::get('/notificar', [NotificationController::class, 'enviarNotificacion']);
 
-Route::get('/animales/{id}/editar', 'AnimalController@editar')->name('animales.edit');
+Route::get('/animales/{id}/editar', [AnimalesController::class, 'editar'])->name('animales.edit');
+
+Route::put('/animales/{id}',[AnimalesController::class, 'update'])->name('animales.update');
 
 
 // ruta de animales

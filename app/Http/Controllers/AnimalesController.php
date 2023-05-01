@@ -37,7 +37,41 @@ class AnimalesController extends Controller
         return view('animales.indexVet', compact('animales'));
     }
 
-    
+    public function editar($id)
+    {
+        $animal = Animales::findOrFail($id); // Busca el animal con el ID recibido
+
+        return view('animales.editar', compact('animal')); // Muestra la vista de edición de animales
+    }
+
+    public function update(Request $request, $id)
+    {
+        if ($request->hasFile('avatarAnimales')) {
+            $image = $request->file('avatarAnimales');
+            $filename = time() . '_' . $image->getClientOriginalName();
+            $path = $image->storeAs('public/avatarsAnimales', $filename);
+        } else {
+            $path = null;
+        }
+
+        $animal = Animales::findOrFail($id); // Busca el animal con el ID recibido
+
+        $animal->nombre = $request->input('nombre'); // Actualiza el nombre del animal
+        $animal->codigo = $request->input('codigo'); // Actualiza la especie del animal
+        $animal->sexo = $request->input('sexo'); // Actualiza el nombre del animal
+        $animal->peso = $request->input('peso'); 
+        $animal->edad = $request->input('edad'); // Actualiza el nombre del animal
+        $animal->raza = $request->input('raza'); 
+        $animal->numeroVacunas = $request->input('numeroVacunas'); // Actualiza el nombre del animal
+        $animal->numeroCrias = $request->input('numeroCrias'); 
+        $animal->generoCrias = $request->input('generoCrias'); // Actualiza el nombre del animal
+        $animal->Proposito = $request->input('Proposito'); 
+        $animal->avatarVaca = $path;
+        $animal->save(); // Guarda los cambios en la base de datos
+
+        return view('animales.index'); // Redirige a la página de la tabla de animales con un mensaje de éxito
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -76,10 +110,7 @@ class AnimalesController extends Controller
      * @param  \App\Models\Animales  $animales
      * @return \Illuminate\Http\Response
      */
-    public function edit(Animales $animales)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -88,10 +119,6 @@ class AnimalesController extends Controller
      * @param  \App\Models\Animales  $animales
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Animales $animales)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.

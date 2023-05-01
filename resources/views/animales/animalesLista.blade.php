@@ -13,7 +13,7 @@
             @foreach($animales as $animal)
                 <tr>
                     <td>
-                    <a href="#">
+                    <a href="{{ route('animales.edit', ['id' => $animal->id]) }}">
                     <i class="fas fa-pencil-alt"></i>
                     </a>
                     </td>
