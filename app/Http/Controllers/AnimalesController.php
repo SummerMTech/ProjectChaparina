@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Animales;
 use App\Models\Fugados;
 use Illuminate\Http\Request;
-
+use App\Models\Notification;
 class AnimalesController extends Controller
 {
     /**
@@ -30,15 +30,14 @@ class AnimalesController extends Controller
         return view('animales.index2', compact('animales', 'fugados'));
     }
 
-    public function updateAnimalAges()
+    public function indexVet()
     {
-        if ($animales->edad >= 10) {
-            $notification = new Notification();
-            $notification->title = 'Animal mayor de 10 años';
-            $notification->description = 'El animal ' . $animal->nombre . ' tiene ' . $animal->edad . ' años o más.';
-            $notification->save();
-        }
+        $animales = Animales::all();
+                
+        return view('animales.indexVet', compact('animales'));
     }
+
+    
     /**
      * Show the form for creating a new resource.
      *

@@ -19,6 +19,10 @@ Route::get('/principal', function () {
     return view('principal');
 });
 
+Route::get('/mapa', function () {
+    return view('vistas.mapa');
+})->name('mapa');
+
 Route::get('/vista', function () {
     return view('vista');
 });
@@ -28,9 +32,15 @@ Route::get('/notificaciones', function () {
 })->name('notificaciones')->middleware('auth');
 
 Route::get('/notificar', [NotificationController::class, 'enviarNotificacion']);
+
+Route::get('/animales/{id}/editar', 'AnimalController@editar')->name('animales.edit');
+
+
 // ruta de animales
 Route::get('/animales',[AnimalesController::class,'index']) ->name('animalesLista.index');
 Route::get('/animalesFugados',[AnimalesController::class,'index2']) ->name('animalesLista.index2');
+Route::get('/veterinario',[AnimalesController::class,'indexVet']) ->name('animalesLista.indexVet');
+
 Route::get('/setup',[setupController::class,'create']) ->name('setup.index');
 
 Route::get('/login',[ControlSesion::class,'create'])->middleware('guest')->name('login.index');

@@ -31,6 +31,8 @@ class registroAnimalesController extends Controller
             'raza' => $request->input('raza'),
             'numeroVacunas' => $request->input('numeroVacunas'),
             'numeroCrias' => $request->input('numeroCrias'),
+            'generoCrias' => $request->input('generoCrias'),
+            'Proposito'  => $request->input('Proposito'),
             'avatarVaca' => $path, // guardar la ruta de la imagen de avatar
         ]);
 
@@ -38,6 +40,6 @@ class registroAnimalesController extends Controller
         // Guardar los datos en la base de datos utilizando una consulta SQL
        
 
-        return redirect()->to('/setup');
+        return redirect()->to('/animales');
     }
 }

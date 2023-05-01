@@ -179,19 +179,19 @@
 	<hr _ngcontent-nxv-c22 class = "sidebar-divider my-8">
     <ul class="sidebar-menu">
         <li class="menu-item">
-            <a href="#">
+            <a href="{{ route('mapa') }}">
 			<i class="fas fa-map-marker-alt"></i>
                 <span>Mapa</span>
             </a>
         </li>
         <li class="menu-item">
-            <a href="#">
+            <a href="">
                 <i class="fas fa-tag"></i>
                 <span>Ventas</span>
             </a>
         </li>
         <li class="menu-item">
-		    <a href="#">
+		    <a href="{{ route('animalesLista.indexVet')}}">
 				<i class="fas fa-book"></i>
                 <span>Datos Veterinarios</span>
             </a>

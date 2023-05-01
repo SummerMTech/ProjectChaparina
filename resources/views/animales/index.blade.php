@@ -7,7 +7,8 @@
     </div>
     <div class="panel-content">
         <br>
-        <a href="{{ route('descargar-tabla-pdf') }}" class="btn btn-primary">Descargar Informe PDF</a>      
+        <a href="{{ route('descargar-tabla-pdf') }}" class="btn btn-primary">Descargar Informe PDF</a>  
+        <a href="{{ route('registroAnimales.index') }}" class="btn btn-primary my-1">Agregar ganado</a>    
         @include('animales/animalesLista')
     </div>
 </div>
