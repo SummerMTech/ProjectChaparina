@@ -114,6 +114,17 @@
 		background-color: #a889ff;
 		border-bottom: 1px solid #ddd;
 	}
+
+	.notification-content ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		}
+
+	.notification-content li {
+		padding: 10px;
+		border-bottom: 1px solid #ccc;
+		}
 	</style>
 
 	<meta charset="UTF-8">
@@ -185,7 +196,7 @@
             </a>
         </li>
         <li class="menu-item">
-            <a href="">
+            <a href="{{ route('animalesLista.indexVentas')}}">
                 <i class="fas fa-tag"></i>
                 <span>Ventas</span>
             </a>
@@ -204,11 +215,19 @@
         </li>
 		<li class="menu-item">
             <a href="{{ route('animalesLista.index2')}}">
-                <i class="fas fa-cog"></i>
+			<i class="fas fa-exclamation-triangle"></i>
                 <span>Animales Fuera del Corral</span>
             </a>
         </li>
-    </ul>
+		@if(auth()->check() && auth()->user()->name === 'admin')
+			<li class="menu-item">
+				<a href="{{ route('setup.index')}}">
+					<i class="fas fa-cog"></i>
+					<span>Usuarios</span>
+				</a>
+			</li>
+		@endif
+	    </ul>
 </nav>
 @yield('content')
 

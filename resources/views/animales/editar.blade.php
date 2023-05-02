@@ -65,8 +65,8 @@
 								</div>
 
 								<div class="form-group">
-									<label for="avatar">Avatar</label>
-									<input type="file" name="avatarAnimales" id="avatarAnimales" class="form-control-file" value="{{ $animal->avatarAnimales }}><
+									<label for="avatarAnimales">Avatar</label>
+									<input type="file" name="avatarAnimales" id="avatarAnimales" class="form-control-file" value="{{ $animal->avatarVaca}}">
 								</div>
 								
 								<button type="submit" class="btn btn-primary">Guardar cambios</button>

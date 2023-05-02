@@ -37,11 +37,12 @@ Route::get('/animales/{id}/editar', [AnimalesController::class, 'editar'])->name
 
 Route::put('/animales/{id}',[AnimalesController::class, 'update'])->name('animales.update');
 
-
+Route::get('/buscar', [AnimalesController::class, 'buscar'])->name('buscar');
 // ruta de animales
 Route::get('/animales',[AnimalesController::class,'index']) ->name('animalesLista.index');
 Route::get('/animalesFugados',[AnimalesController::class,'index2']) ->name('animalesLista.index2');
 Route::get('/veterinario',[AnimalesController::class,'indexVet']) ->name('animalesLista.indexVet');
+Route::get('/ventas',[AnimalesController::class,'indexVentas']) ->name('animalesLista.indexVentas');
 
 Route::get('/setup',[setupController::class,'create']) ->name('setup.index');
 

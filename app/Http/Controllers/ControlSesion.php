@@ -23,11 +23,10 @@ class ControlSesion extends Controller
             return back()->withErrors(['message' => 'El usuario o contraseña es incorrecto, INCORRECTO!']);    
         }
         
-        if(request('email')=='admin@chaparina.com'){
-            return redirect()->to('/setup'); 
-        }else{
+        //if(request('email')=='admin@chaparina.com'){
+           
             return redirect()->to('/animales'); 
-        }
+        
         
        
         //

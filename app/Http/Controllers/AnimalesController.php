@@ -15,6 +15,7 @@ class AnimalesController extends Controller
      */
     public function index()
     {
+        
         $animales = Animales::all();
         $fugados = Animales::select('animales.nombre','animales.avatarVaca','fugados.codigo','fugados.fechaFuga')
         ->join('fugados', 'animales.codigo', '=', 'fugados.codigo')->get();
@@ -30,12 +31,36 @@ class AnimalesController extends Controller
         return view('animales.index2', compact('animales', 'fugados'));
     }
 
-    public function indexVet()
+    public function indexVentas()
     {
+       
+        $ventas = Animales::where('edad', '>', 8)->get();
+         
+        return view('animales.indexVentas', compact('ventas'));
+    }
+    
+
+    public function indexVet(Request $request)
+    {
+        if ($request->has('nombre')) {
+            return $this->buscar($request);
+        }
+        $registros = null;
         $animales = Animales::all();
                 
-        return view('animales.indexVet', compact('animales'));
+        return view('animales.indexVet', compact('animales','registros'));
     }
+
+    public function buscar(Request $request)
+    {
+        $nombre = $request->input('nombre');
+
+        $registros = Animales::where('nombre', 'LIKE', "%$nombre%")->get();
+        $animales = Animales::all();
+        return view('animales.indexVet', compact('animales','registros'));
+        //return view('animales.indexVet', ['registros' => $registros]);
+    }
+
 
     public function editar($id)
     {
@@ -46,13 +71,7 @@ class AnimalesController extends Controller
 
     public function update(Request $request, $id)
     {
-        if ($request->hasFile('avatarAnimales')) {
-            $image = $request->file('avatarAnimales');
-            $filename = time() . '_' . $image->getClientOriginalName();
-            $path = $image->storeAs('public/avatarsAnimales', $filename);
-        } else {
-            $path = null;
-        }
+        
 
         $animal = Animales::findOrFail($id); // Busca el animal con el ID recibido
 
@@ -66,10 +85,17 @@ class AnimalesController extends Controller
         $animal->numeroCrias = $request->input('numeroCrias'); 
         $animal->generoCrias = $request->input('generoCrias'); // Actualiza el nombre del animal
         $animal->Proposito = $request->input('Proposito'); 
-        $animal->avatarVaca = $path;
+        if ($request->hasFile('avatarAnimales')) {
+            
+            $image = $request->file('avatarAnimales');
+            $filename = time() . '_' . $image->getClientOriginalName();
+            $path = $image->storeAs('public/avatarsAnimales', $filename);
+            $animal->avatarVaca = $path;
+        } 
+        
         $animal->save(); // Guarda los cambios en la base de datos
 
-        return view('animales.index'); // Redirige a la página de la tabla de animales con un mensaje de éxito
+        return redirect()->route('animalesLista.index'); // Redirige a la página de la tabla de animales con un mensaje de éxito
     }
 
     /**
