@@ -11,15 +11,44 @@
 			@csrf
 			<input type="text" class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Nombre (animalito)" id="nombre" name="nombre">
 			<input type="text" class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Codigo" id="codigo" name="codigo">
-			<input type="text" class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Sexo" id="sexo" name="sexo">
+			<!--<input type="text" class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Sexo" id="sexo" name="sexo">-->
+			
+			<select type="text" class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Sexo" id="sexo" name="sexo">
+					<option value="macho">Macho</option>
+					<option value="hembra">Hembra</option>
+			</select>
+
 			<input type="text" class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Peso" id="peso" name="peso">
 			
 			<input type="text" class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Edad" id="edad" name="edad">
-			<input type="text" class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Raza" id="raza" name="raza">
-			<input type="text" class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="# de Vacunas" id="numeroVacunas" name="numeroVacunas">
-			<input type="text" class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="# de crias" id="numeroCrias" name="numeroCrias">
-			<input type="text" class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="genero de crias" id="generoCrias" name="generoCrias">
-			<input type="text" class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Proposito" id="Proposito" name="Proposito">
+			<select class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Raza" id="raza" name="raza">
+					<option value="Criollo">Criollo</option>
+					<option value="Nelore">Nelore</option>
+					<option value="Mestizo">Mestizo</option>
+					<option value="Holstein">Holstein</option>
+			</select>
+			<select class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="# de Vacunas" id="numeroVacunas" name="numeroVacunas">
+					<option value="1 (Synd Ade)">1 (Synd Ade)</option>
+					<option value="2 (Synd Ade, Derrisan Cepaera)">2 (Synd Ade, Derrisan Cepaera)</option>
+					<option value="3 (Rabat Vac, Synd Ade, Derrisan Cepaera)">3 (Rabat Vac, Synd Ade, Derrisan Cepaera)</option>
+					<option value="4 (Covenix 10, Rabat Vac, Synd Ade, Derrisan Cepaera)">4 (Covenix 10, Rabat Vac, Synd Ade, Derrisan Cepaera)</option>
+			</select>
+			<select class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="# de crias" id="numeroCrias" name="numeroCrias">
+					<option value="Ninguno">Ninguno</option>
+					<option value="1 cria">1 cria</option>
+					<option value="2 crias">2 crias</option>
+			</select>
+			
+			<select class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="genero de crias" id="generoCrias" name="generoCrias">
+					<option value="Ninguno">Ninguno</option>
+					<option value="macho(s)">macho(s)</option>
+					<option value="hembra(s)">hembra(s)</option>
+					<option value="macho y hembra">macho y hembra</option>
+			</select>
+			<select class="border border-gray-200 rounded-md bg-gray-200 w-full text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Proposito" id="Proposito" name="Proposito">
+					<option value="Leche">Leche</option>
+					<option value="Carne">Carne</option>
+			</select>
 
 			<div class="form-group">
 				<label for="avatar">Avatar</label>
